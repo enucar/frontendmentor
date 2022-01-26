@@ -2,7 +2,9 @@ const QrCode = ({ url, title, text }) => {
   const qrcode = React.useRef(null);
 
   React.useEffect(() => {
-    new QRCode(qrcode.current.querySelector(".qr-code-code"), {
+    const el = qrcode.current.querySelector(".qr-code-code");
+
+    new QRCode(el, {
       text: url,
       width: 160,
       height: 160,
@@ -10,6 +12,8 @@ const QrCode = ({ url, title, text }) => {
       colorLight: "#3685fe",
       correctLevel: QRCode.CorrectLevel.H,
     });
+
+    el.title = "";
   });
 
   return (

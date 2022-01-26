@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  height: 100vh;
+  background-color: hsl(217, 54%, 11%);
+  @include flex-center;
+  flex-direction: column;
+}
+
+// NFT card
+.nft-card {
+  width: 350px;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: hsl(216, 50%, 16%);
+}
