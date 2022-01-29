@@ -4,7 +4,7 @@ const QrCode = ({ url, title, text }) => {
   React.useEffect(() => {
     const el = qrcode.current.querySelector(".qr-code-code");
 
-    new QRCode(el, {
+    const code = new QRCode(el, {
       text: url,
       width: 160,
       height: 160,
@@ -14,6 +14,8 @@ const QrCode = ({ url, title, text }) => {
     });
 
     el.title = "";
+
+    return () => code.clear();
   });
 
   return (

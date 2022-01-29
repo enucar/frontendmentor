@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap");
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 @mixin flex-center {
@@ -17,12 +22,143 @@ body {
   background-color: hsl(217, 54%, 11%);
   @include flex-center;
   flex-direction: column;
+  font-family: 'Outfit', sans-serif;
 }
 
 // NFT card
 .nft-card {
-  width: 350px;
+  max-width: 350px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 24px;
   background-color: hsl(216, 50%, 16%);
+  box-shadow: 16px 24px 0 hsl(217, 55%, 10%),
+    -16px 24px 0 hsl(217, 55%, 10%),
+    24px 32px 0 hsl(216, 57%, 11%),
+    -24px 32px 0 	hsl(216, 57%, 11%);
+
+  &-image {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &-holder {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;      
+    }
+
+    &-hover {
+      position: absolute;
+      inset: 0;
+      background-color: hsla(178, 100%, 50%, 0.5);
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      border-radius: 10px;
+
+      :hover > & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-content {
+    padding: 26px 0 16px 0;
+    border-bottom: 1px solid  hsl(215, 32%, 27%);
+  }
+
+  &-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    a {
+      text-decoration: none;
+      color: hsl(0, 0%, 100%);
+      transition: color 0.2s;
+
+      &:hover {
+        color: hsl(178, 100%, 50%);
+      }
+    }
+  }
+
+  &-text {
+    color: hsl(215, 51%, 70%);
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  &-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+  }
+
+  &-coin {
+    display: flex;
+    align-items: center;
+    
+    &-value {
+      font-weight: 600;
+      margin-left: 8px;
+      color: hsl(178, 100%, 50%);
+
+      span {
+        display: inline-block;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  &-time {
+    display: flex;
+    align-items: center;
+    color: hsl(215, 51%, 70%);
+
+    &-left {
+      margin-left: 8px;
+    }
+  }
+
+  &-creator {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+
+    &-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid hsl(0, 0%, 100%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    &-name {
+      margin-left: 14px;
+      color: hsl(215, 51%, 70%);
+
+      a {
+        color: hsl(0, 0%, 100%);
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+          color: hsl(178, 100%, 50%);
+        }
+      }
+    }
+  }
 }
