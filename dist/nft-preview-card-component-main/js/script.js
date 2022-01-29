@@ -10,6 +10,10 @@ const NftPreviewCard = ({
   endDate,
   creator,
 }) => {
+  const timestampDiff = endDate - (Date.now() / 1000);
+  
+  let endDateInDays = Math.round(timestampDiff / (60 * 60 * 24));
+
   return (
     <div className="nft-card">
       <a className="nft-card-image" href="#">
@@ -32,7 +36,7 @@ const NftPreviewCard = ({
           </div>
           <div className="nft-card-time">
             <img src={clockIcon} />
-            <div className="nft-card-time-left">3 days left</div>
+            <div className="nft-card-time-left">{endDateInDays} days left</div>
           </div>
         </div>
       </div>
@@ -67,7 +71,7 @@ const App = () => {
       value={0.0041}
       coin={ethereum}
       creator={creator}
-      endDate={1645007212}
+      endDate={1645867848} // timestamp
       image="./images/image-equilibrium.jpg"
     />
   );
